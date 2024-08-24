@@ -9,6 +9,9 @@ import { useState } from "react"
 import axios from "axios"
 
 export function SignUp() {
+
+  const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -18,10 +21,10 @@ export function SignUp() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const backendUrl = process.env.BackendUrl
-    console.log(backendUrl)
+    // const backendUrl = process.env.BackendUrl
+    // console.log(backendUrl)
     try {
-      const response = await axios.post(`http://localhost:3000/api/signup`,{
+      const response = await axios.post(`${backendUrl}/api/signup`,{
         firstName: firstName,
         lastName: lastName,
         username: username,

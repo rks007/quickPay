@@ -12,12 +12,14 @@ export interface userSchema {
 
 export const useSearchUser = (name: string) => {
 
+    const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+
     const[loading, setLoading] = useState(true);
     const [usersData, setUsersData ] = useState<userSchema[]>([]);
 
     useEffect(() => {
         const fetchUser = async() => {
-            const users = await axios(`http://localhost:3000/api/user/search?filter=${name}`)
+            const users = await axios(`${backendUrl}/api/user/search?filter=${name}`)
             setUsersData(users.data.users)
             setLoading(false);
             // console.log(users.data.users);

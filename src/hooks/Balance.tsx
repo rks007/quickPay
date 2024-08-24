@@ -1,5 +1,4 @@
 import axios from "axios"
-import { log } from "console";
 import { useEffect, useState } from "react"
 
 export interface balanceNumber {
@@ -8,13 +7,15 @@ export interface balanceNumber {
 
 export const useBalance = () => {
 
+    const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+
     const [balance, setBalance] = useState<number | null>(null);
 
 
     useEffect(() => {
         const fetchBalance = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/account/balance");
+                const res = await axios.get(`${backendUrl}/api/account/balance`);
                 // console.log(res.data.balance);
                 
                 setBalance(res.data.balance); // Assuming the API response has a "balance" key

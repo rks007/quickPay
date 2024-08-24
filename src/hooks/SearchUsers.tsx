@@ -20,7 +20,7 @@ export const useSearchUser = (name: string) => {
             const users = await axios(`http://localhost:3000/api/user/search?filter=${name}`)
             setUsersData(users.data.users)
             setLoading(false);
-            console.log(users.data.users);
+            // console.log(users.data.users);
             
         }
 

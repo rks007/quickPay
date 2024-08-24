@@ -15,7 +15,7 @@ export const useBalance = () => {
         const fetchBalance = async () => {
             try {
                 const res = await axios.get("http://localhost:3000/api/account/balance");
-                console.log(res.data.balance);
+                // console.log(res.data.balance);
                 
                 setBalance(res.data.balance); // Assuming the API response has a "balance" key
             } catch (error) {

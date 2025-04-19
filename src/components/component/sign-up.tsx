@@ -36,6 +36,7 @@ export function SignUp() {
         console.log('Signup failed:', response.status);
       }
     } catch (error) {
+      console.log('Error during signup:', error);
       alert('error while signing up')
     }
   }

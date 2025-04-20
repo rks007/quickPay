@@ -12,11 +12,14 @@ import { userSchema, useSearchUser } from "@/hooks/SearchUsers"
 import axios from 'axios';
 import { useToast } from '../ui/use-toast';
 import { useRouter } from 'next/navigation';
+import { log } from 'console';
 
 function Search() {
 
   const {toast} = useToast();
   const router = useRouter();
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const [input, setinput] = useState("");
   const { usersData, loading} = useSearchUser(input);
@@ -35,10 +38,15 @@ function Search() {
         return;
       }
 
-      const response = await axios.post("http://localhost:3000/api/account/transfer",{
+      // const response = await axios.post("http://localhost:3000/api/account/transfer",{
+      //   id: user.id,
+      //   transferAmount: amount
+      // })
+      const response = await axios.post(`${backendUrl}/api/account/transfer`,{
         id: user.id,
         transferAmount: amount
       })
+      console.log(backendUrl);
       
       if(response.status == 200){
         setAmountInput("");

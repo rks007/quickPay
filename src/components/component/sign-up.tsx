@@ -10,7 +10,7 @@ import axios from "axios"
 
 export function SignUp() {
 
-  const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

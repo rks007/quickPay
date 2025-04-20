@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nextjsupi-config
+  namespace: nextjsupi
+data:
+  MONGODB_URI: "mongodb://mongodb-service:27017/nextjsupi"
+  NODE_ENV: production
+  NEXTAUTH_SECRET: password_nextauth
+  NEXTAUTH_URL: http://20.244.90.75:3000
+  NEXT_PUBLIC_BACKEND_URL: http://20.244.90.75:3000

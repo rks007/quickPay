@@ -20,6 +20,11 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+# Set build-time environment variables for Next.js
+# These will be used during `next build`
+ENV NODE_ENV=production
+ENV NEXT_PUBLIC_BACKEND_URL=http://20.244.90.75:3000
+
 # Generate Prisma client
 RUN npx prisma generate
 

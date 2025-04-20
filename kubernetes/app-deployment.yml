@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjsupi
+  namespace: nextjsupi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nextjsupi
+  template:
+    metadata:
+      labels:
+        app: nextjsupi
+    spec:
+      containers:
+        - name: nextjsupi
+          image: rks007/nextjs-upi
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: nextjsupi-config
+
+          startupProbe:
+            httpGet:
+              path: /
+              port: 3000
+            failureThreshold: 30
+            periodSeconds: 5
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 3

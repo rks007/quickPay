@@ -22,7 +22,13 @@ spec:
           envFrom:
             - configMapRef:
                 name: nextjsupi-config
-
+          env:
+            - name: NEXT_PUBLIC_BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: nextjsupi-config
+                  key: NEXT_PUBLIC_BACKEND_URL
+              
           startupProbe:
             httpGet:
               path: /

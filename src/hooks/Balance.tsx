@@ -7,7 +7,7 @@ export interface balanceNumber {
 
 export const useBalance = () => {
 
-    const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const [balance, setBalance] = useState<number | null>(null);
 

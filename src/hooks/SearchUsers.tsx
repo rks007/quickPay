@@ -12,7 +12,7 @@ export interface userSchema {
 
 export const useSearchUser = (name: string) => {
 
-    const backendUrl = process.env.BACKEND_URL || "http://localhost:3000";
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const[loading, setLoading] = useState(true);
     const [usersData, setUsersData ] = useState<userSchema[]>([]);

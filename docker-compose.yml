@@ -17,7 +17,7 @@ services:
       start_period: 30s
 
   next-app:
-      image: rks007/nextjsupi
+      image: rks007/nextjs-upi
       container_name: next-app
       environment:
         - MONGO_URL=mongodb://mongo:27017/next #The reason for using mongodb://mongo:27017/next instead of mongodb://localhost:27017/next is that the mongo service is running in a different container. The hostname 'mongo' refers to the mongo service defined in this docker-compose file.

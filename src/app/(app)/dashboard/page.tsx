@@ -4,7 +4,7 @@ import Search from '@/components/component/Search';
 import { useBalance } from '@/hooks/Balance'
 import React from 'react'
 
-function page() {
+function Page() {
   const balance = useBalance();
 
   // console.log("dashboard:-", balance);
@@ -24,4 +24,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
